@@ -14,7 +14,7 @@ img_data, mask_data = dicom_util.get_scan_mask_data(config.image_path, config.co
 
 study_folders = glob.glob(os.path.join(config.DATA_PATH, "*", "*"))
 
-#Split the studies into training dataset and test data sets. 
+#Split the studies into training dataset and test data sets
 studies = np.array(study_folders)
 np.random.shuffle(studies)
 num_studies = len(studies)
