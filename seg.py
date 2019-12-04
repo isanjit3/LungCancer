@@ -23,8 +23,6 @@ img_data, mask_data = dicom_util.get_scan_macd sk_data(config.image_path, config
 """
 
 study_folders = glob.glob(os.path.join(config.DATA_PATH, "*", "*"))
-
-
 #Split the studies into training dataset and test data sets. 
 studies = np.array(study_folders)
 np.random.shuffle(studies)
@@ -38,7 +36,6 @@ else:
   X_train,  Y_train = data_util.get_study_images(train_study_folders) 
   
 X_test,Y_test   = data_util.get_study_images(test_study_folders, False)
-
 model = unet.build_cnn_unet_model()
 
 # Fit model
@@ -49,4 +46,4 @@ else:
   checkpointer = keras.callbacks.ModelCheckpoint('model-lung-segmentation.h5', verbose=1, save_best_only=True)
   results = model.fit(X_train, Y_train, validation_split=0.2, batch_size=4, epochs=10, 
                     callbacks=[earlystopper, checkpointer], shuffle=True)
-                    
+
