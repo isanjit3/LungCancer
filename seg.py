@@ -19,10 +19,11 @@ tf.keras.backend.set_session(tf.Session(config=tf_config))
 slice_orders, slices_imgpath_dict = dicom_util.slice_order(config.image_path)
 
 print(slice_orders[0])
-img_data, mask_data = dicom_util.get_scan_mask_data(config.image_path, config.contour_filename)
+img_data, mask_data = dicom_util.get_scan_macd sk_data(config.image_path, config.contour_filename)
 """
 
 study_folders = glob.glob(os.path.join(config.DATA_PATH, "*", "*"))
+
 
 #Split the studies into training dataset and test data sets. 
 studies = np.array(study_folders)
